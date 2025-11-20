@@ -1,0 +1,34 @@
+/*header*/
+
+
+:root {--bs-primary: #3665f3;--bs-primaryborder: #2b5aeb;--bs-default: #5c36f3; --bs-defaultb: #5732eb; --bs-red: #e5330b;}
+
+    
+.short-description ul {
+    padding: 0;
+    margin: 0;
+}
+.short-description ul li {
+    display: block;
+    line-height: 20px;
+    padding-bottom: 10px;
+        color: black;
+}
+.btn-primary {
+    background-color: var(--bs-decustom);
+    border-color: var(--bs-primaryborder);
+    border-radius: 0 !important;
+    color: #fff;
+}
+
+.btn-default {
+    background-color: var(--bs-default);
+    border-color: var(--bs-defaultb);
+    border-radius: 0 !important;
+    color: #fff !important;
+}
+
+.cart__btn .ai-shopping-cart{
+    margin-right: -7px;
+}
+

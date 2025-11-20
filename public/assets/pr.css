@@ -1,0 +1,41 @@
+
+/*print content*/
+.adsTitle01{
+    display:none;
+}
+.PTitle{
+    text-align: left;
+    padding: 10px 0;
+    font-size: 30px;
+    font-weight: 500;
+    color: black;
+    border-top: 2px solid #e2e2e2;
+}
+.PPublisTime{
+    text-align: left;
+    padding: 10px 0;
+    font-size: 15px;
+}
+.PImg{
+    width: 60%; display: block; margin: 0 auto
+}
+.PContent{
+    text-align: left;
+    padding: 15px 0;
+    line-height: 32px;
+    font-size: 25px;
+}
+.PContent img{
+    width: 100%;
+    margin-bottom:5px;
+    padding-bottom:5px;
+}
+#PLogo{
+    max-width: 290px; padding-bottom: 3px;
+}
+#PFooter{
+    border-top: 2px solid #e2e2e2;
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+}

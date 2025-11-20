@@ -1,0 +1,45 @@
+
+/*print content*/
+.adsTitle01{
+    display:none;
+}
+.PrintTitle{
+	text-align: left;
+    padding: 10px 0;
+    font-size: 30px;
+    font-weight: 500;
+    color: black;
+    border-top: 2px solid #e2e2e2;
+}
+.PrintPublisTime{
+	text-align: left;
+    padding: 10px 0;
+    font-size: 15px;
+}
+.printImg{
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    padding: 10px 0;
+}
+.printContent{
+	text-align: left;
+    padding: 15px 0;
+    line-height: 32px;
+    font-size: 25px;
+}
+.printContent img{
+    width: 100%;
+}
+#printLogo{
+    margin-top: 10px;
+    width: 250px;
+    padding: 10px 0;
+    max-width: 300px;
+}
+#printFooter{
+    border-top: 2px solid #e2e2e2;
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+}

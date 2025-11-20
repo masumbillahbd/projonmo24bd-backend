@@ -1,0 +1,187 @@
+#pmanagerModal .modal-dialog {
+    width: 1150px !important;
+    margin: 5% auto;
+}
+#pmanagerModal .nav-tabs {
+    border-bottom: 1px solid #ddd;
+    padding-left: 10px;
+}
+#pmanagerModal .nav-tabs .nav-link {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    margin-right: 0;
+}
+#pmanagerModal .form-control.search-bar{
+    height: 44px !important;
+    font-size: 14px;
+    width: 55%;
+    margin: 21px auto;
+    border-radius: 7px !important;
+}
+.pmanager-box {
+    padding: 4px;
+
+    margin-bottom: 20px;
+}
+#realtimedata .pmanager-box img{
+    width: 100px;
+    height: 64px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    padding: 3px;
+    border-radius: 3px;
+}
+.pmanager-img {
+    width: 100px;
+    height: 64px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    padding: 3px;
+    border-radius: 3px;
+}
+.pmanagerShow {
+    display: block;
+    background: #f3f3f3;
+    width: 100px;
+    margin: 1px auto;
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 5px;
+    line-height: 1;
+    border-radius: 3px;
+    color: red !important;
+}
+#pmanagerModal{
+    background: #00000080;
+    border: none;
+    box-shadow: none;
+}
+
+#pmanagerModal .modal-body-content{
+    min-height: 380px;
+    height: 400px;
+}
+
+#preview-image-before-upload{
+    height: 113px !important;
+    width: auto;
+    border: 1px solid #f1f1f1;
+    padding: 9px;
+    margin-bottom: 16px;
+    box-shadow: 2px 2px 1px #ddd;
+    border-radius: 3px;
+}
+
+#pmanagerModal .panel-body{
+    text-align: center;
+}
+#pmanagerModal label{
+    width: 135px;
+    height: 62px;
+    margin-top: 5px;
+    background: #ffb6812b;
+    cursor: pointer;
+}
+#pmanagerModal .modal__header{
+    padding: 13px 10px 13px 18px;
+    background: #990000;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.modalCloseBtn2 {
+    border: 0px !important;
+    background: none !important;
+}
+
+#myModalReview {
+    height: 486px;
+    overflow-y: clip;
+}
+
+#allMedia {
+    height: 350px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.pmanager-box {
+    display: inline-block;
+    padding: 5px 0;
+    /*      background: #eee;*/
+}
+
+.pmanager-single-details {
+    margin-right: 10px;
+}
+
+.pmanager-single-img {
+    padding-bottom: 10px;
+}
+
+.pmanager-single-img img {
+    width: 100%;
+    border: 2px solid #eee;
+}
+.pmanager-file-input-field-label{
+    color: white;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    background: linear-gradient(to left, #2a81c0 50%, #397baa 50%) right;
+    background-size: 200%;
+    transition: .5s ease-out;
+}
+.pmanager-file-input-field-label img{
+    width: 50px;
+}
+#pmanager-image-preview img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 100px;
+}
+
+.pmanagerShow {
+    color: #28a745 !important;
+}
+
+.pmanager-single-img-copy-url {
+    text-decoration: none;
+    color: #000;
+}
+
+.pmanager-single-img-delete-permanently {
+    padding: 5px 0;
+}
+
+.pmanager-single-img-delete-permanently,
+.pmanagerShow,
+.pmanagerUse {
+    cursor: pointer;
+}
+
+.pmanager-single-img-copy-url,
+.pmanager-single-img-delete-permanently,
+.pmanager-single-message,
+.clipboard-message {
+    display: none;
+}
+
+@media(max-width: 991px){
+    #pmanagerModal .modal-dialog {
+        width: 90% !important;
+        margin: 80px auto;
+    }
+    #pmanagerModal .modal-body-content {
+        min-height: 580px;
+        height: 580px !important;
+    }
+    #allMedia {
+        height: 540px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}

@@ -1,0 +1,140 @@
+
+/*action btn*/
+/*.btn-sm.btn-icon, .btn-success{
+    padding: 7px 6px !important;
+    width: 31px !important;
+    height: 31px !important;
+}
+.card-body img {
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+}
+.btn-circle {
+  border-radius: 50em;
+}*/
+.btn-soft-success {
+    padding: 7px 8px !important;
+    width: 31px !important;
+    height: 31px !important;
+    background-color: rgba(10, 187, 117, .15);
+    color: #0abb75;
+}
+
+.btn-soft-success:hover {
+    background-color: #0abb75;
+    color: #fff;
+}
+
+.btn-soft-primary {
+    padding: 6px 10px !important;
+    width: 31px !important;
+    height: 31px !important;
+    background-color: rgba(55, 125, 255, .15);
+    color: #377dff;
+}
+
+.btn-soft-primary:hover {
+    background-color: #377dff;
+    color: #fff;
+}
+
+.btn-soft-warning {
+    padding: 7px 6px !important;
+    width: 31px !important;
+    height: 31px !important;
+    background-color: rgba(255, 197, 25, .15);
+    color: #ffc519;
+}
+
+.btn-soft-warning:hover {
+    background-color: #ffc519;
+    color: #fff;
+}
+
+.btn-soft-danger {
+    padding: 6px 10px !important;
+    width: 31px !important;
+    height: 31px !important;
+    background-color: rgba(239, 72, 106, .15);
+    color: #ef486a;
+}
+
+.btn-soft-danger:hover {
+    background-color: #ef486a;
+    color: #fff;
+}
+
+/*.btn-success{
+  background-color: rgba(55, 125, 255, .15);
+  color: #377dff;
+  padding: 8px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+}
+.btn-danger{
+  background-color: rgba(239, 72, 106, .15);
+  color: #ef486a;
+  padding: 8px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+}*/
+
+.btn-sm.btn-icon {
+    padding: 8px;
+    width: 35px;
+    height: 35px;
+}
+
+.btn-circle {
+    border-radius: 50em;
+}
+
+.btn-soft-success {
+    background-color: rgba(10, 187, 117, .15);
+    color: #0abb75;
+}
+
+.btn-soft-success:hover {
+    background-color: #0abb75;
+    color: #fff;
+}
+
+.btn-soft-primary {
+    background-color: rgba(55, 125, 255, .15);
+    color: #377dff;
+}
+
+.btn-soft-primary:hover {
+    background-color: #377dff;
+    color: #fff;
+}
+
+.btn-soft-warning {
+    background-color: rgba(255, 197, 25, .15);
+    color: #ffc519;
+}
+
+.btn-soft-warning:hover {
+    background-color: #ffc519;
+    color: #fff;
+}
+
+.btn-soft-danger {
+    background-color: rgba(239, 72, 106, .15);
+    color: #ef486a;
+}
+
+.btn-soft-danger:hover {
+    background-color: #ef486a;
+    color: #fff;
+}
+
+.btn-height {
+    height: 44px !important;
+}
