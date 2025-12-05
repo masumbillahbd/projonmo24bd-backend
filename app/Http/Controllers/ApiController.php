@@ -27,6 +27,58 @@ use Illuminate\Support\Facades\Session;
 
 class ApiController extends Controller
 {
+    // archive
+    public function archive(Request $request, $date = null)
+    {
+        
+        $date = $date ?? $request->date;
+        if (!$date) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Date not found',
+            ], 404);
+        }
+
+        // Pagination params
+        $limit = $request->query('limit', 12);
+        $page  = $request->query('page', 1);
+
+        $limit = is_numeric($limit) ? intval($limit) : 12;
+        $page  = is_numeric($page) ? intval($page) : 1;
+
+        // Base query — get posts from that specific date
+        $query = Post::whereDate('created_at', $date)
+            ->where('post_status', 1)
+            ->orderBy('created_at', 'desc');
+
+        // Clone query for total count
+        $totalAllPosts = (clone $query)->count();
+
+        // Apply pagination
+        $paginated = $query->paginate($limit, ['*'], 'page', $page);
+        $setting = setting();
+        $firstAd = ad_by_position(1);
+        
+        
+        view_counter();
+        
+        return response()->json([
+            'status' => 'success',
+            'date' => $date,
+            'setting' => $setting,
+            'firstAd' => $firstAd,
+            'posts' => $paginated->items(),
+            'meta' => [
+                'current_page'     => $paginated->currentPage(),
+                'last_page'        => $paginated->lastPage(),
+                'per_page'         => $paginated->perPage(),
+                'total'            => $paginated->total(),
+                'total_all_posts'  => $totalAllPosts,
+            ],
+        ], 200);
+    }
+
+
 
     public function dates()
     {
@@ -68,7 +120,7 @@ class ApiController extends Controller
             ]);
 
             $firstAd = ad_by_position(1);
-
+            view_counter();
             return response()->json([
                 'status' => 'success',
                 'setting' => $setting,
@@ -243,6 +295,8 @@ class ApiController extends Controller
         // paginate correctly
         $paginated = $posts->paginate($limit, ['*'], 'page', $page);
         
+        view_counter();
+        
         return response()->json([
             'status' => 'success',
             'firstAd' => $firstAd,
@@ -411,7 +465,9 @@ class ApiController extends Controller
     
         // full count of all published posts in this category (optional)
         $totalAllPosts = $category->posts()->where('posts.post_status', 1)->count();
-    
+        
+        view_counter();
+        
         return response()->json([
             'status' => 'success',
             'category' => $category,
@@ -505,7 +561,8 @@ class ApiController extends Controller
     
         // full count of all published posts in this category (optional)
         $totalAllPosts = $subCategory->posts()->where('posts.post_status', 1)->count();
-    
+        
+        view_counter();
     
         return response()->json([
             'status' => 'success',
@@ -651,11 +708,33 @@ class ApiController extends Controller
             $countryLeftTwo = Category::find($country->id)->posts()->select('posts.id', 'posts.uniqid', 'posts.headline','posts.sub_headline','posts.excerpt','posts.featured_image','posts.post_status','posts.created_at')->where('post_status', '1')->orderBy('created_at', 'desc')->skip(0)->take(2)->get();
             $countryRightTwo = Category::find($country->id)->posts()->select('posts.id', 'posts.uniqid', 'posts.headline','posts.sub_headline','posts.excerpt','posts.featured_image','posts.post_status','posts.created_at')->where('post_status', '1')->orderBy('created_at', 'desc')->skip(2)->take(2)->get();
             $countryRightAd = ad_by_position(2);
-        
+            
+            $opinion = Category::select('id', 'name', 'slug')->find(383);
+            $opinionFour = $opinion->posts()
+            ->select('posts.id', 'posts.uniqid', 'posts.headline', 'posts.featured_image', 'posts.post_status', 'posts.created_at')
+            ->where('post_status', 1)
+            ->orderBy('created_at', 'desc')
+            ->skip(0)
+            ->take(2)
+            ->get();
+            
+            $opinionForMobile = $opinion->posts()
+                ->select('posts.id', 'posts.uniqid', 'posts.headline', 'posts.featured_image', 'posts.post_status', 'posts.created_at')
+                ->where('post_status', 1)
+                ->orderBy('created_at', 'desc')
+                ->skip(0)
+                ->take(5)
+                ->get();
+                
+            
+            view_counter();
 
             return response()->json([
                 'status' => 'success',
                 'settings' => $settings,
+                'opinion' => $opinion,
+                'opinionFour' => $opinionFour,
+                'opinionForMobile' => $opinionForMobile,
                 'specialPosts' => $specialPosts,
                 'popularTags' => $popularTags,
                 'leadFirstPost' => $leadFirstPost,
@@ -744,15 +823,6 @@ class ApiController extends Controller
             ->orderBy('created_at', 'desc')
             ->skip(1)
             ->take(3)
-            ->get();
-
-            $opinion = Category::select('id', 'name', 'slug')->find(383);
-            $opinionFour = $opinion->posts()
-            ->select('posts.id', 'posts.uniqid', 'posts.headline', 'posts.featured_image', 'posts.post_status', 'posts.created_at')
-            ->where('post_status', 1)
-            ->orderBy('created_at', 'desc')
-            ->skip(0)
-            ->take(4)
             ->get();
 
             // technology
@@ -871,9 +941,6 @@ class ApiController extends Controller
                 'lawOne' => $lawOne,
                 'lawThree' => $lawThree,
 
-                'opinion' => $opinion,
-                'opinionFour' => $opinionFour,
-
                 'sports' => $sports,
                 'sportsOne' => $sportsOne,
                 'sportsThree' => $sportsThree,
@@ -978,7 +1045,9 @@ class ApiController extends Controller
                   ->select('id', 'thumbnail', 'title', 'uniqid', 'created_at');
     
         $paginated = $query->paginate($limit);
-    
+        
+        view_counter();
+        
         return response()->json([
             'status' => 'success',
             'data' => $paginated->items(),
@@ -999,6 +1068,8 @@ class ApiController extends Controller
         $anothervideos = VideoGallery::orderBy('created_at', 'desc')->select('id','thumbnail','title', 'uniqid', 'created_at')->take(7)->get();
         $adOne = ad_by_position(14);
         $adTwo = ad_by_position(15);
+        
+        view_counter();
         
         return response()->json([
             'status' => 'success',
@@ -1039,7 +1110,11 @@ class ApiController extends Controller
             ], 404);
         }
     
-   
+        
+        // single news view count
+        $singlePost->view_count = $singlePost->view_count + 1;
+        $singlePost->save();
+        view_counter();
     
         // Related posts by category
         $categoryRelatedPosts = $category->posts()
